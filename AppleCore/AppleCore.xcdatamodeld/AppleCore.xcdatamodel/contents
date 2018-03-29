@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Fish" representedClassName="FishMO" syncable="YES" codeGenerationType="class">
+        <attribute name="size" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inLake" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lake" inverseName="hasFish" inverseEntity="Lake" syncable="YES"/>
+    </entity>
+    <entity name="Lake" representedClassName="LakeMO" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="volume" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="hasFish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fish" inverseName="inLake" inverseEntity="Fish" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Lake" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Fish" positionX="-54" positionY="9" width="128" height="90"/>
+    </elements>
 </model>

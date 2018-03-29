@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -20,6 +20,50 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func populate(_ sender: UIButton) {
+        let moc = (UIApplication.shared.delegate as!
+        AppDelegate).persistentContainer.viewContext
+        
+        let fish0 = NSEntityDescription.insertNewObject(forEntityName: "fish", into: moc) as! FishMO
+        fish0.species = "Carp"
+        fish0.size = 12.3
+        
+        
+        let fish1 = NSEntityDescription.insertNewObject(forEntityName: "fish", into: moc) as! FishMO
+        fish1.species = "Clown"
+        fish1.size = 1.5
+        
+        
+        let fish2 = NSEntityDescription.insertNewObject(forEntityName: "fish", into: moc) as! FishMO
+        fish2.species = "Shark"
+        fish2.size = 1234.50
+        
+        let lakeVictoria = NSEntityDescription.insertNewObject(forEntityName: "lake", into: moc) as! LakeMO
+        lakeVictoria.name = "Victoria"
+        lakeVictoria.volume = 100000.0
+        
+        
+        let lakeMichigan = NSEntityDescription.insertNewObject(forEntityName: "lake", into: moc) as! LakeMO
+        lakeMichigan.name = "Michigan"
+        lakeMichigan.volume = 120000.0
+        
+        
+        
+        lakeVictoria.addToHasFish(fish0)
+        lakeVictoria.addToHasFish(fish2)
+        
+        lakeMichigan.addToHasFish(fish0)
+        lakeMichigan.addToHasFish(fish1)
+        
+        
+        do {
+            try moc.save()
+            print("we saved it")
+        }
+        catch {
+            print("error trying to save: \(error)")
+        }
+    }
+    
 }
 
