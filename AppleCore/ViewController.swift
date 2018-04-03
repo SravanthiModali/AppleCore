@@ -72,6 +72,7 @@ class ViewController: UIViewController {
         
         
         let fetchRequest:NSFetchRequest<FishMO> = NSFetchRequest(entityName: "Fish")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "size", ascending: true)]
         do {
             let allFish = try moc.fetch(fetchRequest)
             for fish in allFish {
@@ -96,8 +97,8 @@ class ViewController: UIViewController {
         
         
         let fetchRequest:NSFetchRequest<FishMO> = NSFetchRequest(entityName: "Fish")
-//        fetchRequest.predicate = NSPredicate(format: "species BeginsWith %@", "Carp")
-        fetchRequest.predicate = NSPredicate(format: "size > ",12.0)
+        fetchRequest.predicate = NSPredicate(format: "species BeginsWith %@", "Carp")
+//        fetchRequest.predicate = NSPredicate(format: "size > ",12.0)
         do {
             let allFish = try moc.fetch(fetchRequest)
             for fish in allFish {
@@ -105,15 +106,45 @@ class ViewController: UIViewController {
                 if let lakes = fish.inLake {
                     for lake in lakes {
                         print((lake as! LakeMO).name!)
+                        moc.delete(lake as! NSManagedObject)
+                        
                     }
                 }
                 
                 
             }
+            //makes change permanent
+            try moc.save()
         } catch {
             print("oops! fetch failure")
         }
     }
+    
+//    @IBAction func fetchCarp(_ sender: UIButton) {
+//        let moc = (UIApplication.shared.delegate as!
+//            AppDelegate).persistentContainer.viewContext
+//
+//
+//        let fetchRequest:NSFetchRequest<FishMO> = NSFetchRequest(entityName: "Fish")
+//        fetchRequest.predicate = NSPredicate(format: "species BeginsWith %@", "Carp")
+//        //        fetchRequest.predicate = NSPredicate(format: "size > ",12.0)
+//        do {
+//            let allFish = try moc.fetch(fetchRequest)
+//            for fish in allFish {
+//                print(fish.species!, fish.size)
+//                if let lakes = fish.inLake {
+//                    for lake in lakes {
+//                        print((lake as! LakeMO).name!)
+//                    }
+//                }
+//
+//
+//            }
+//        } catch {
+//            print("oops! fetch failure")
+//        }
+//    }
+//
     
     
 }
