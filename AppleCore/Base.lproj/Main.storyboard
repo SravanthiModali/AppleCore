@@ -26,6 +26,22 @@
                                     <action selector="populate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XJ4-fF-Jn5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgU-pp-Obr">
+                                <rect key="frame" x="153" y="318" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fetch all"/>
+                                <connections>
+                                    <action selector="fetchAll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZc-0J-s8D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glm-M0-ueF">
+                                <rect key="frame" x="143" y="374" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="fetchCarps"/>
+                                <connections>
+                                    <action selector="fetchCarp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGK-dh-qzJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
